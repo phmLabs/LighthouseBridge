@@ -22,7 +22,8 @@ class Lighthouse
 
         exec($command, $plainOutput, $return);
 
-        $report = json_decode($file, true);
+        $json = file_get_contents($file);
+        $report = json_decode($json, true);
         unlink($file);
 
         return $report;
