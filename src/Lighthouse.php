@@ -18,7 +18,7 @@ class Lighthouse
             '--chrome-flags="--headless"',
         ];
 
-        $command = $execute . ' ' . $url . implode(' ', $params);
+        $command = $execute . ' ' . $url . ' ' . implode(' ', $params);
 
         exec($command, $plainOutput, $return);
 
