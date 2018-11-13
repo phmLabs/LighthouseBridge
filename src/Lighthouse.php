@@ -7,7 +7,6 @@ class Lighthouse
     public function check($url)
     {
         $file = sys_get_temp_dir() . DIRECTORY_SEPARATOR . md5(microtime()) . '-lighthouse-report.json';
-        file_put_contents($file, $htmlContent);
 
         $execute = 'lighthouse';
 
