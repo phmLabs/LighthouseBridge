@@ -2,31 +2,45 @@
 
 namespace phmLabs\LighthouseBridge;
 
+use phmLabs\LighthouseBridge\Result\Result;
+
 class Lighthouse
 {
-    public function check($url)
-    {
-        $file = sys_get_temp_dir() . DIRECTORY_SEPARATOR . md5(microtime()) . '-lighthouse-report.json';
+    const DEVICE_DESKTOP = 'desktop';
+    const DEVICE_MOBILE = 'mobile';
 
-        $execute = 'lighthouse';
+    /**
+     * @param $url
+     * @param string $device
+     * @return Result
+     */
+    public function process($url, $device = self::DEVICE_DESKTOP)
+    {
+
+
+        $file = sys_get_temp_dir() . DIRECTORY_SEPARATOR . md5(microtime());
+
+        $execute = __DIR__ . '/../lighthouse/node_modules/.bin/lighthouse';
 
         $params = [
+            '--output=html',
             '--output=json',
-            '--output-path=' . $file,
+            '--output-path="' . $file . '"',
             '--save-assets',
-            '--quite',
+            '--quiet',
+            '--emulated-form-factor=' . $device,
             '--chrome-flags="--headless"',
+            '--throttling-method=simulate'
         ];
 
         $command = $execute . ' ' . $url . ' ' . implode(' ', $params);
 
-        exec($command, $plainOutput, $return);
+        exec($command, $output, $return_var);
 
-        $json = file_get_contents($file);
-        $report = json_decode($json, true);
-        unlink($file);
+        $result = Result::fromFiles($file . '.report.json', $file . '.report.html');
+        unlink($file . '.report.json');
+        unlink($file . '.report.html');
 
-        return $report;
-
+        return $result;
     }
 }
