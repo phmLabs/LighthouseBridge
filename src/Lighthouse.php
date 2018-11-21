@@ -35,6 +35,13 @@ class Lighthouse
 
         exec($command, $output, $return_var);
 
+        $outputString = implode($output, "\n");
+
+        if (strpos($output[0], 'UnhandledPromiseRejectionWarning') !== false) {
+            $message = $output[0];
+            throw new LighthouseException('Lighthouse exception: ' . $message);
+        }
+
         $result = Result::fromFiles($file . '.report.json', $file . '.report.html');
 
         unlink($file . '.report.json');

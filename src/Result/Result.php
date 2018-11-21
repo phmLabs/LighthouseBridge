@@ -2,6 +2,8 @@
 
 namespace phmLabs\LighthouseBridge\Result;
 
+use phmLabs\LighthouseBridge\LighthouseException;
+
 class Result
 {
     private $resultArray;
@@ -36,16 +38,20 @@ class Result
      */
     public static function fromFiles($jsonFile, $htmlFile)
     {
-        $json = file_get_contents($jsonFile);
+        if (file_exists($jsonFile)) {
+            $json = file_get_contents($jsonFile);
+        } else {
+            throw new LighthouseException('Json file not found.');
+        }
 
         if ($json == "") {
-            throw new \RuntimeException('The given json is empty.');
+            throw new LighthouseException('The given json is empty.');
         }
 
         $reportArray = json_decode($json, true);
 
         if (count($reportArray) == 0) {
-            throw new \RuntimeException('The given json response is not valid json.');
+            throw new LighthouseException('The given json response is not valid json.');
         }
 
         $htmlContent = file_get_contents($htmlFile);
