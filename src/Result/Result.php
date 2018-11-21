@@ -48,4 +48,10 @@ class Result
     {
         return $this->htmlContent;
     }
+
+    public function getJsonReport()
+    {
+        $jsonString = json_encode($this->resultArray, JSON_PRETTY_PRINT);;
+        return $jsonString;
+    }
 }

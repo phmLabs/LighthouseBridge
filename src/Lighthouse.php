@@ -16,8 +16,6 @@ class Lighthouse
      */
     public function process($url, $device = self::DEVICE_DESKTOP)
     {
-
-
         $file = sys_get_temp_dir() . DIRECTORY_SEPARATOR . md5(microtime());
 
         $execute = __DIR__ . '/../lighthouse/node_modules/.bin/lighthouse';
@@ -38,6 +36,7 @@ class Lighthouse
         exec($command, $output, $return_var);
 
         $result = Result::fromFiles($file . '.report.json', $file . '.report.html');
+        
         unlink($file . '.report.json');
         unlink($file . '.report.html');
 
