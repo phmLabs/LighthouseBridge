@@ -29,7 +29,7 @@ class Lighthouse
             '--save-assets',
             '--quiet',
             '--emulated-form-factor=' . $device,
-            '--chrome-flags="--headless"',
+            '--chrome-flags="--headless --no-sandbox"',
             '--throttling-method=simulate'
         ];
 
