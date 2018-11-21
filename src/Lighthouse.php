@@ -31,12 +31,12 @@ class Lighthouse
             '--throttling-method=simulate'
         ];
 
-        $command = $execute . ' ' . $url . ' ' . implode(' ', $params);
+        $command = $execute . ' ' . $url . ' ' . implode(' ', $params) . ' 2>&1';
 
         exec($command, $output, $return_var);
 
         $result = Result::fromFiles($file . '.report.json', $file . '.report.html');
-        
+
         unlink($file . '.report.json');
         unlink($file . '.report.html');
 
