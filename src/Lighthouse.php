@@ -37,7 +37,7 @@ class Lighthouse
 
         $outputString = implode($output, "\n");
 
-        if (strpos($output[0], 'UnhandledPromiseRejectionWarning') !== false) {
+        if ($outputString != '' && strpos($output[0], 'UnhandledPromiseRejectionWarning') !== false) {
             $message = $output[0];
             throw new LighthouseException('Lighthouse exception: ' . $message);
         }
