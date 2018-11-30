@@ -28,7 +28,7 @@ class Lighthouse
             '--quiet',
             '--emulated-form-factor=' . $device,
             '--chrome-flags="--headless --no-sandbox"',
-            '--throttling-method=simulate'
+            '--throttling-method=provided'
         ];
 
         $command = $execute . ' ' . $url . ' ' . implode(' ', $params) . ' 2>&1';
