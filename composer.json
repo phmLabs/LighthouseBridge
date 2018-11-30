@@ -1,6 +1,6 @@
 {
   "name": "phmlabs/lighthousebridge",
-  "description": "PHP library for google page speed insights",
+  "description": "PHP bridge for the Google Lighthouse CLI tool",
   "license": "MIT",
   "require": {
     "php": ">= 5.4.0"

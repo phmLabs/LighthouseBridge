@@ -1,5 +1,5 @@
 # LighthouseBridge
 
-This is a PHP brigde for the Google Lighthouse CLI tool.
+This is a PHP bridge for the Google Lighthouse CLI tool.
 
 https://github.com/GoogleChrome/lighthouse
