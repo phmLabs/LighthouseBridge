@@ -27,8 +27,8 @@ class Lighthouse
             '--save-assets',
             '--quiet',
             '--emulated-form-factor=' . $device,
-            '--chrome-flags="--headless --no-sandbox"',
-            '--throttling-method=provided'
+            '--chrome-flags="--headless --no-sandbox --ignore-certificate-errors"',
+            '--throttling-method=provided',
         ];
 
         $command = $execute . ' ' . $url . ' ' . implode(' ', $params) . ' 2>&1';
