@@ -31,7 +31,9 @@ class Lighthouse
             '--throttling-method=provided',
         ];
 
-        $command = $execute . ' ' . $url . ' ' . implode(' ', $params) . ' 2>&1';
+        $command = $execute . ' "' . $url . '" ' . implode(' ', $params) . ' 2>&1';
+
+        // var_dump($command);
 
         exec($command, $output, $return_var);
 
