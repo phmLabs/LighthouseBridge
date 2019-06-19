@@ -4,7 +4,7 @@ namespace phmLabs\LighthouseBridge\Result;
 
 class Category
 {
-    const SCORE_UNDEFINED = 'undefined';
+    const SCORE_UNDEFINED = 'score_undefined';
 
     private $categoryArray;
 
