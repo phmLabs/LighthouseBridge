@@ -33,9 +33,7 @@ class Lighthouse
 
         $command = $execute . ' "' . $url . '" ' . implode(' ', $params) . ' 2>&1';
 
-        // var_dump($command);
-
-        exec($command, $output, $return_var);
+        exec($command, $output, $return_var);@
 
         $outputString = implode($output, "\n");
 

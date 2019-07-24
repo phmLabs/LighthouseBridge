@@ -8,6 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lighthouse": "4.1.0"
+    "lighthouse": "5.1.0",
+    "npm": "^6.10.1"
   }
 }
